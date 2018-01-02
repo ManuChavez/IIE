@@ -4,17 +4,6 @@ labels = []
 features = []
 
 
-def getFeatures(reader, labels):
-    f = []
-    for label in labels:  
-        count = 0
-        for row in reader:
-            if (row[1]== label and row[4] != "profesor" and row[6] == "da_modificarCampo"):
-                count += 1
-        f.append(count)
-    return f
-
-
 def getLabels(reader):
     l = []
     for row in reader:
@@ -37,3 +26,14 @@ with open("dump.csv", encoding="utf8") as file:
     print(len(labels))
     for feature in features:
         print(feature)
+
+
+def getFeatures(reader, labels):
+    f = []
+    for label in labels:  
+        count = 0
+        for row in reader:
+            if (row[1]== label and row[4] != "profesor" and row[6] == "da_modificarCampo"):
+                count += 1
+        f.append(count)
+    return f
