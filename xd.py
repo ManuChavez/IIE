@@ -3,6 +3,15 @@ import csv
 labels = []
 features = []
 
+def getFeatures(reader, labels):
+    f = []
+    for label in labels:  
+        count = 0
+        for row in reader:
+            if (row[1]== label and row[4] != "profesor" and row[6] == "da_modificarCampo"):
+                count += 1
+        f.append(count)
+    return f
 
 def getLabels(reader):
     l = []
@@ -28,12 +37,3 @@ with open("dump.csv", encoding="utf8") as file:
         print(feature)
 
 
-def getFeatures(reader, labels):
-    f = []
-    for label in labels:  
-        count = 0
-        for row in reader:
-            if (row[1]== label and row[4] != "profesor" and row[6] == "da_modificarCampo"):
-                count += 1
-        f.append(count)
-    return f
