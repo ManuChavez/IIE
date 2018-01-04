@@ -4,10 +4,9 @@ labels = []
 features = []
 
 def getFeatures(reader, labels):
-    f = []
-    for label in labels:  
-        count = 0
-        for row in reader:
+    f = [] 
+    for count, label in enumerate(labels): 
+        for row in reader: 
             if (row[1]== label and row[4] != "profesor" and row[6] == "da_modificarCampo"):
                 count += 1
         f.append(count)
